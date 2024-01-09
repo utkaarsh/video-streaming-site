@@ -9,7 +9,10 @@ export const VIDEO_API =
   GOOGLE_API_KEYS;
 
 export const YOUTUBE_SEARCH_API =
-  "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=YOURKEYWORD&type=video&key=" +
-  GOOGLE_API_KEYS;
+  "https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&type=video&key=" +
+  GOOGLE_API_KEYS +
+  "&q=";
+export const SEARCH_SUGGESTION_API =
+  "http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 // https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=YOURKEYWORD&type=video&key=AIzaSyCN7QXr2LqKdc6cExvHamjIJ_u9nUGcYFE
