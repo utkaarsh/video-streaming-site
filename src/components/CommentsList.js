@@ -8,9 +8,8 @@ const CommentsList = ({ comments }) => {
         return (
           <div>
             <Comment key={index} data={comment} />
-            <div className="ml-2 p-5 border border-white border-l-black">
-              <Comment key={index} data={comment} />
-              <Comment key={index} data={comment} />
+            <div className="ml-2 p-2 border border-l-black">
+              <CommentsList comments={comment.replies} />
             </div>
           </div>
         );
