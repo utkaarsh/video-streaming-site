@@ -4,10 +4,10 @@ import Comment from "./Comment";
 const CommentsList = ({ comments }) => {
   return (
     <div>
-      {comments.map((comment, index) => {
+      {comments.map((comment, i) => {
         return (
           <div>
-            <Comment key={index} data={comment} />
+            <Comment data={comment} key={i} />
             <div className="ml-2 p-2 border border-l-black">
               <CommentsList comments={comment.replies} />
             </div>
