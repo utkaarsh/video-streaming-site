@@ -17,6 +17,4 @@ export const SEARCH_SUGGESTION_API =
 
 // https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=YOURKEYWORD&type=video&key=AIzaSyCN7QXr2LqKdc6cExvHamjIJ_u9nUGcYFE
 
-export const WATCH_VIDEO_API =
-  "https://www.youtube.com/youtubei/v1/player?&prettyPrint=falsekey=" +
-  GOOGLE_API_KEYS;
+export const YOUTUBE_VIDEO_WATCH_API = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key=${GOOGLE_API_KEYS}&id=`;
