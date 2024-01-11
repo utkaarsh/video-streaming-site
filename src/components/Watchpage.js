@@ -2,13 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/store/appSlice";
 import { useSearchParams } from "react-router-dom";
-import { YOUTUBE_VIDEO_WATCH_API } from "../utils/store/constants";
+import {
+  VIDEO_API,
+  YOUTUBE_VIDEO_API,
+  YOUTUBE_VIDEO_WATCH_API,
+} from "../utils/store/constants";
 import CommentsContainer from "./CommentsContainer";
 import LiveChat from "./LiveChat";
 import VideoDetail from "./VideoDetail";
+import RecommededVideoContainer from "./RecommededVideoContainer";
+import Recommend from "./Recommend";
 
 const Watchpage = () => {
   const [details, setDetails] = useState("");
+  const [recommended, setRecommended] = useState("");
   const [searchParams] = useSearchParams();
   const id = searchParams.get("v");
   // console.log("Search Params", searchParams.get("v"));
@@ -19,11 +26,16 @@ const Watchpage = () => {
   }, []);
 
   const getVideoApi = async () => {
-    const data = await fetch(YOUTUBE_VIDEO_WATCH_API + id);
-    const json = await data.json();
-    const videoDetails = json.items[0];
+    const data = await Promise.all([
+      fetch(YOUTUBE_VIDEO_WATCH_API + id),
+      fetch(YOUTUBE_VIDEO_API),
+    ]);
+    const json1 = await data[0].json();
+    const json2 = await data[1].json();
+    const videoDetails = json1.items[0];
+    const recVideos = json2.items;
     setDetails(videoDetails);
-    console.log("json", json);
+    setRecommended(recVideos);
   };
 
   return (
@@ -47,7 +59,14 @@ const Watchpage = () => {
           <LiveChat />
         </div>
       </div>
-      <CommentsContainer />
+      <div className="flex mx-3">
+        <CommentsContainer />
+        <div className="p-2 w-full">
+          <h1 className="font-bold mb-3 text-xl">Recommeded</h1>
+
+          <Recommend recommended={recommended} />
+        </div>
+      </div>
     </div>
   );
 };

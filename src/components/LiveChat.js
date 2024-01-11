@@ -25,6 +25,7 @@ const LiveChat = () => {
   //   const chatMessages = useSelector((store) => store.chat.message);
   return (
     <div>
+      <h1 className="font-bold my-3 text-xl"> Live Chat</h1>
       <div className=" bg-slate-100 rounded-lg rounded-b-none mx-2 p-2 border border-black w-full h-[500px] overflow-y-scroll flex flex-col-reverse">
         {chatMessages.map((c, i) => (
           <ChatMessage key={i} name={c.name} message={c.message} />

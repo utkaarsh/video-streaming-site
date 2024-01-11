@@ -3,7 +3,7 @@ import Comment from "./Comment";
 
 const CommentsList = ({ comments }) => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       {comments.map((comment, i) => {
         return (
           <div>
