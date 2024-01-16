@@ -93,9 +93,9 @@ const Head = () => {
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="absolute hover:bg-gray-200 hover:rounded-full w-9 h-9 right-[33.2rem] top-[2px]"
+                className="absolute hover:bg-gray-200 hover:rounded-full w-9 h-9 right-[28.2rem] top-[2px]"
               >
-                X
+                x
               </button>
             )}
             {showSuggestion && searchQuery && (
